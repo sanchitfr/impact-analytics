@@ -17,13 +17,13 @@ const App = () => {
     useEffect(() => {
       fetchCandidates();
     }, []);
-  
+
   return (
     <div className="App">
       <Router>
         <Switch>
           <header className="App-header">
-            <Route path='/users/:id' render={(props) => <Candidate candidates={candidates}/>}/>
+            <Route path='/impact-analytics/:id' render={(props) => <Candidate candidates={candidates}/>}/>
             <Route exact path='/impact-analytics' render={(props) => <CardList candidates={candidates}/>}/>
           </header>
         </Switch>

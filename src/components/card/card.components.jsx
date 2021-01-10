@@ -10,7 +10,7 @@ export const Card = ({candidate}) => {
 
     return(
     <div className='card-container'>
-        <a href={`/users/${candidate.id}`}>
+        <a href={`/impact-analytics/${candidate.id}`}>
             <img alt='Candidate' src={candidate.Image}></img>
             <h4>{candidate.name}</h4>
         </a>
