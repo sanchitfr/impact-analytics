@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import CardList from './components/card-list/card-list.components';
+import Candidate from './components/candidate/candidate.component';
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const [candidates, setCandidates] = useState();
+
+  const fetchCandidates = async () => {
+    const response = await fetch('https://s3-ap-southeast-1.amazonaws.com/he-public-data/users49b8675.json');
+    const data = await response.json();
+    setCandidates(data);
+}
+    useEffect(() => {
+      fetchCandidates();
+    }, []);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          <header className="App-header">
+            <Route path='/:id' render={(props) => <Candidate candidates={candidates}/>}/>
+            <Route exact path='/' render={(props) => <CardList candidates={candidates}/>}/>
+          </header>
+        </Switch>
+      </Router>
     </div>
   );
 }
