@@ -23,7 +23,7 @@ const App = () => {
       <Router>
         <Switch>
           <header className="App-header">
-            <Route exact path='/users/:id' render={(props) => <Candidate candidates={candidates}/>}/>
+            <Route path='/users/:id' render={(props) => <Candidate candidates={candidates}/>}/>
             <Route exact path='/impact-analytics' render={(props) => <CardList candidates={candidates}/>}/>
           </header>
         </Switch>
